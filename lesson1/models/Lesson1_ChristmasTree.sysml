@@ -1,5 +1,5 @@
 package Lesson1_ChristmasTree {
-    part myChristmasTree {
+    part def myChristmasTree {
         doc Description
         /* A festive Christmas tree with various decorations and components 
          * - Tree parts
