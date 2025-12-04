@@ -14,16 +14,16 @@ package L02_SantaSleigh {
         ref item santa;
         abstract ref part reindeer : Reindeer [9];
        
-        ref part dasher  subsets reindeer { constant redefines noseColor = Color::orange; }
-        ref part dancer  subsets reindeer { constant redefines noseColor = Color::yellow; }
-        ref part prancer subsets reindeer { constant redefines noseColor = Color::green;  }
-        ref part vixen   subsets reindeer { constant redefines noseColor = Color::blue;   }
-        ref part comet   subsets reindeer { constant redefines noseColor = Color::indigo; }
-        ref part cupid   subsets reindeer { constant redefines noseColor = Color::violet; }
-        ref part donner  subsets reindeer { constant redefines noseColor = Color::silver; }
-        ref part blitzen subsets reindeer { constant redefines noseColor = Color::gold;   }
-        ref part rudolph subsets reindeer { constant redefines noseColor = Color::red;    
-                                            attribute redefines energyLevel := 200.0;      }
+        ref part dasher  subsets reindeer { constant attribute redefines noseColor = Color::orange; }
+        ref part dancer  subsets reindeer { constant attribute redefines noseColor = Color::yellow; }
+        ref part prancer subsets reindeer { constant attribute redefines noseColor = Color::green;  }
+        ref part vixen   subsets reindeer { constant attribute redefines noseColor = Color::blue;   }
+        ref part comet   subsets reindeer { constant attribute redefines noseColor = Color::indigo; }
+        ref part cupid   subsets reindeer { constant attribute redefines noseColor = Color::violet; }
+        ref part donner  subsets reindeer { constant attribute redefines noseColor = Color::silver; }
+        ref part blitzen subsets reindeer { constant attribute redefines noseColor = Color::gold;   }
+        ref part rudolph subsets reindeer { constant attribute redefines noseColor = Color::red;    
+                                                     attribute redefines energyLevel := 200.0;      }
     }
 
     part def Reindeer {
