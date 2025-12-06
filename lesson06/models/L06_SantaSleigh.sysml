@@ -6,5 +6,9 @@ package AdventOfSysMLv2_Lesson06 {
             /* This is where driver sits. */
             ref item driver;
         }
+        part cargoBay {
+            doc
+            /* Place for the GiftBag. */
+        }
     }
 }
