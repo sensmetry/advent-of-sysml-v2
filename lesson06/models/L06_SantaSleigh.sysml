@@ -5,8 +5,8 @@ package AdventOfSysMLv2_Lesson06 {
         // Components of the sleigh
         part cockpit {
             doc
-            /* This is where driver sits. */
-            ref item driver;
+            /* This is where Santa sits. */
+            ref item driver = santa;
         }
         part cargoBay {
             doc
@@ -18,6 +18,7 @@ package AdventOfSysMLv2_Lesson06 {
         }
 
         // Entities related to the sleigh
+        ref item santa;
         abstract ref part reindeer : Reindeer [10];
 
         ref part dasher subsets reindeer { constant attribute redefines noseColor = Color::orange; }
