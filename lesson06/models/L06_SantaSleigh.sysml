@@ -10,5 +10,9 @@ package AdventOfSysMLv2_Lesson06 {
             doc
             /* Place for the GiftBag. */
         }
+        part dashboard {
+            doc
+            /* Naughty-Nice dashboard. */
+        }
     }
 }
