@@ -41,6 +41,7 @@ Here is a complete list of lessons with links to YouTube videos and blog posts:
 10. **Comments and Annotations**  ([YouTube](https://youtu.be/mjgTf5SdL-4?si=ctPUOqOuL_wYMWL4), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-10-comments-and-annotations/))
 11. **Attributes and Quantities**  ([YouTube](https://youtu.be/-WqUHL4E1iY?si=Apr7hYSwUH3Sy44Y), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-11-attributes-and-quantities/))
 12. **Connections and Special Subsettings** ([YouTube](https://youtu.be/_5CbL0xOQ4s?si=bICj00fM1cldQatI), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-12-connections-and-special-subsettings/))
+13. **Ports, Interfaces, Items, and Flows** ([YouTube](https://youtu.be/qspuJD_kabc?si=NRl5815Sjvhdcyka), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-13-ports-interfaces-items-and-flows/))
 
 ## Helper tools & tips
 
