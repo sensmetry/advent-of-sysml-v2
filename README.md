@@ -47,7 +47,7 @@ Here is a complete list of lessons with links to YouTube videos and blog posts:
 16. **Value Roll-ups and Advanced Expressions** ([YouTube](https://youtu.be/wZNqEyJHAE0?si=Z2XXYszaUC8kSfAY), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-16-value-rollups-and-advanced-calculations/))
 17. **Actions and Successions** ([YouTube](https://youtu.be/nsww9U5IBQA?si=HSzu3My4XpailmhX), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-17-actions-and-successions/))
 18. **State-Based Behaviors** ([YouTube](https://youtu.be/aFVrg0Sh_30?si=gETZQFUJHggoyZvb), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-18-state-based-behaviors/))
-19.
+19. **State Machine Simulation** 
 20.
 21.
 22.
