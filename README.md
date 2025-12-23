@@ -50,8 +50,8 @@ Here is a complete list of lessons with links to YouTube videos and blog posts:
 19. **State Machine Simulation** ([YouTube](https://youtu.be/Ul8bH_i9_Yc?si=KiuI-W5e-CCAM83f), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-19-state-machine-simulation/))
 20. **CI/CD for SysML v2 Models** ([YouTube](https://youtu.be/gL0ClDpbkPY?si=vT93eWlYgmSs1iIL), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-20-ci-cd-for-sysml-v2-models/))
 21. **Week 3 Recap** ([YouTube](https://youtu.be/F7R3iwHmOhs?si=EcgFxBmiSvwrSnht), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-21-week-3-recap/))
-22. **Requirements** ()
-23.
+22. **Requirements** ([YouTube](https://youtu.be/s1AePw4lbqM?si=kgyMfiSxpPR_qAGn), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-22-requirements/))
+23. **Formal Requirements, Constraints and Templates** ([YouTube](https://www.youtube.com/playlist?list=PLuceG5piNwHG7KBdo02RDPAkJ-ErbzHe0), [Blog post](https://sensmetry.com/advent-of-sysml-v2))
 24.
 
 ## Helper tools & tips
