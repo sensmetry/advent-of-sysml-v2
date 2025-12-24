@@ -1,27 +1,29 @@
 # Advent of SysML v2
 
 Links related to the Advent of SysML v2 training course:
+
 - Website: https://sensmetry.com/advent-of-sysml-v2/
 - Get access to Syside Cloud: https://advent.syside.app 
 - Community Forum: https://forum.sensmetry.com/
    - [Advent of SysML v2 section](https://forum.sensmetry.com/c/syside/advent-of-sysml-v2/)
 
-Course content: 
+Course content:
+
 - YouTube playlist: https://www.youtube.com/playlist?list=PLuceG5piNwHG7KBdo02RDPAkJ-ErbzHe0 
 - Blog posts: https://sensmetry.com/category/advent-of-sysml-v2/ 
 - GitHub: https://github.com/sensmetry/advent-of-sysml-v2
 
 ## Documentation
 
-Try Syside: https://syside.sensmetry.com 
+Try Syside: https://syside.sensmetry.com
 
-Syside Modeler: https://docs.sensmetry.com/modeler/index.html 
+Syside Modeler: https://docs.sensmetry.com/modeler/index.html
 
-Syside Automator: https://docs.sensmetry.com/automator/index.html#automator-home 
+Syside Automator: https://docs.sensmetry.com/automator/index.html#automator-home
 
-SysMLv2 Cheatsheet: https://sensmetry.com/sysml-cheatsheet/ 
+SysMLv2 Cheatsheet: https://sensmetry.com/sysml-cheatsheet/
 
-Sysand: https://sysand.org/ 
+Sysand: https://sysand.org/
 
 Sysand docs: https://docs.sysand.org/
 
@@ -52,7 +54,7 @@ Here is a complete list of lessons with links to YouTube videos and blog posts:
 21. **Week 3 Recap** ([YouTube](https://youtu.be/F7R3iwHmOhs?si=EcgFxBmiSvwrSnht), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-21-week-3-recap/))
 22. **Requirements** ([YouTube](https://youtu.be/s1AePw4lbqM?si=kgyMfiSxpPR_qAGn), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-22-requirements/))
 23. **Formal Requirements, Constraints and Templates** ([YouTube](https://youtu.be/qqah7YM5GuQ?si=BeLd3DDR0DaHGmRX), [Blog post](hhttps://sensmetry.com/advent-of-sysml-v2-lesson-23-formal-requirements-constraints-and-templates/))
-24.
+24. **Requirement Satisfaction and Verification** ([YouTube](https://youtu.be/hibccXv2TZg), [Blog post](https://sensmetry.com/advent-of-sysml-v2-lesson-24-requirement-satisfaction-and-verification/))
 
 ## Helper tools & tips
 
@@ -60,14 +62,14 @@ Here is a complete list of lessons with links to YouTube videos and blog posts:
 
 The SysML Syntax Explorer is a browser-based tool to visualize how Syside parses SysML v2 code. It displays code as an interactive concrete syntax tree (CST) structure, revealing the underlying hierarchy of declarations, expressions, and other language constructs. Use this tool to accelerate Syside Automator script development to quickly identify any elements of interest and how to parse them.
 
-- Explorer with instructions how to use it: https://docs.sensmetry.com/automator/tree-sitter-playground.html 
-- Full screen explorer: https://cst.syside.app/ 
+- Explorer with instructions how to use it: https://docs.sensmetry.com/automator/tree-sitter-playground.html
+- Full screen explorer: https://cst.syside.app/
 
 ### Tips to resolve common issues
 
 #### Resolve shadowed packages issues
 
-To clear warning messages after renaming or moving SysML file to another folder (warnings such as "'<name>' shadows previously declared element in the global scope"), restart Syside language server. To do that, in command palette (Ctrl+P), select "Syside modeler: Restart language server" command. 
+To clear warning messages after renaming or moving SysML file to another folder (warnings such as "'<name>' shadows previously declared element in the global scope"), restart Syside language server. To do that, in command palette (Ctrl+P), select "Syside modeler: Restart language server" command.
 
 #### Restarting your Syside Cloud workspace
 
