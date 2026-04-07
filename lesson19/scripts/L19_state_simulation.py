@@ -295,7 +295,7 @@ class Visualization:
                 target = transition.target
                 if target in state_children:
                     # Target is a composite state - find its initial substate
-                    initial = statechart.state_for(target).initial
+                    initial = getattr(statechart.state_for(target), 'initial', None)
                     if initial:
                         target = initial
 
