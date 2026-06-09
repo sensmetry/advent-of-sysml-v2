@@ -21,14 +21,16 @@ package L18_States {
         ref port hmi;
         entry;
             then idle;
+
         state idle;
             accept StartMission via hmi
             if reindeerCount == 9 and totalPower >= 36 [SI::kW]
             do send new Command("Gee-up!") via eyelet
             then mission;
+
         state mission parallel {
             state monitoringReindeer {
-                entry;
+                first start
                     then nominal;
                 state nominal;
                 state lowEnergy {
@@ -47,8 +49,9 @@ package L18_States {
                     then nominal;
             }
             state controllingReindeer {
-                entry;
+                first start
                     then takingOff;
+
                 state takingOff;
                     accept after 60 [SI::s]
                     then flying;

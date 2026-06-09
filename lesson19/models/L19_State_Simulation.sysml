@@ -23,7 +23,7 @@ package L19_State_Simulation {
             attribute groundSpeed subsets ISQ::speed default 0 [m / s];
             attribute verticalSpeed subsets ISQ::speed default 0 [m / s];
 
-            entry;
+            first start
                 then grounded;
 
             state grounded {
@@ -52,7 +52,7 @@ package L19_State_Simulation {
                 doc
                 /* Hovering in place. Composite state for delivery operations. */
 
-                entry;
+                first start
                     then idle;
 
                 state idle {

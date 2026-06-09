@@ -45,7 +45,7 @@ package L18_SantaSleighCruiseControl_Solution {
         attribute lowVisibility subsets ISQ::length default 500 [m];
         attribute highWindSpeed subsets ISQ::speed default 20 [m / s];
 
-        entry;
+        first start
             then off;
 
         state off;
@@ -73,7 +73,7 @@ package L18_SantaSleighCruiseControl_Solution {
                  * | decelerating | currentSpeed <= targetSpeed            | maintaining  |
                  */
 
-                entry;
+                first start
                     then maintaining;
 
                 state maintaining;
@@ -105,7 +105,7 @@ package L18_SantaSleighCruiseControl_Solution {
                  * | foggyAndWindy | windSpeed <= highWindSpeed                                | foggy         |
                  */
 
-                entry;
+                first start
                     then clear;
 
                 state clear;
