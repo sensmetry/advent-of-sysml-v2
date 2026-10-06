@@ -23,17 +23,14 @@ def show_part_attributes(part: syside.Element) -> None:
     """
 
     print(f"Part: {part.name}")
-    for owned_element in part.owned_elements:
+    for owned_element in part.owned_elements.collect():
         if type(owned_element) is syside.AttributeUsage:
             print(f" └ Attribute: {owned_element.name}")
 
 
 def main() -> None:
-    # Load SysML model and get diagnostics (errors/warnings)
-    (model, diagnostics) = syside.load_model([MODEL_FILE_PATH])
-
-    # Make sure the model contains no errors before proceeding
-    assert not diagnostics.contains_errors(warnings_as_errors=True)
+    # Load the SysML model; raises syside.ModelError on any error or warning
+    model = syside.load_model([MODEL_FILE_PATH], warnings_as_errors=True)
 
     root_element = find_element_by_name(model, "Reindeer")
 

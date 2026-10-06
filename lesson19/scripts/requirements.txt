@@ -1,0 +1,4 @@
+syside
+sismic
+matplotlib
+graphviz

@@ -9,7 +9,7 @@ import re
 ## ============================================================================
 LESSON_DIR = pathlib.Path(__file__).parent.parent
 MODEL_FILE_PATH = LESSON_DIR / "models" / "L20_SantaSleigh.sysml" 
-STANDARD_LIBRARY = syside.Environment.get_default().lib
+CONTEXT = syside.vm.Context(syside.Environment.get_default().lib)
 CSS_FILE_PATH = LESSON_DIR / "scripts" / "styles.css"
 MARKDOWN_REPORT_PATH = LESSON_DIR / "reports" / "report.md"
 HTML_REPORT_PATH = LESSON_DIR / "reports" / "index.html"
@@ -31,7 +31,7 @@ class ModelParsing:
     def find_inherited_features_by_name(parent: syside.Element, name: str) -> list[syside.Feature]:
         """Search for inherited features by name."""
         result = []
-        for feature in parent.inherited_features:
+        for feature in parent.inherited_features.collect():
             if feature.name == name:
                 result.append(feature)
         return result
@@ -40,7 +40,7 @@ class ModelParsing:
     def find_inherited_features_by_type(parent: syside.Element, searchType: syside.Type) -> list[syside.Feature]:
         """Search for inherited features by type."""
         result = []
-        for feature in parent.inherited_features:
+        for feature in parent.inherited_features.collect():
             if type(feature) is searchType:
                 result.append(feature)
         return result
@@ -49,7 +49,7 @@ class ModelParsing:
     def find_owned_elements_by_name(parent: syside.Element, name: str) -> syside.Element | None:
         """Search for a specific owned element by name."""
 
-        for element in parent.owned_elements:
+        for element in parent.owned_elements.collect():
             if element.name == name:
                 return element
         return None
@@ -63,7 +63,7 @@ class ModelParsing:
         value, compilation_report = compiler.evaluate_feature(
             feature=feature,
             scope=scope,
-            stdlib=STANDARD_LIBRARY,
+            context=CONTEXT,
             experimental_quantities=True,
         )
         if compilation_report.fatal:
@@ -344,11 +344,8 @@ class DataExtraction:
 
 
 def main() -> None:
-    # Load SysML model and get diagnostics (errors/warnings)
-    (model, diagnostics) = syside.load_model([MODEL_FILE_PATH])
-
-    # Make sure the model contains no errors before proceeding
-    assert not diagnostics.contains_errors(warnings_as_errors=True)
+    # Load the SysML model; raises syside.ModelError on any error or warning
+    model = syside.load_model([MODEL_FILE_PATH], warnings_as_errors=True)
 
     # Generate the report
     title = "Santa's Sleigh 2025 - Bill of Materials"

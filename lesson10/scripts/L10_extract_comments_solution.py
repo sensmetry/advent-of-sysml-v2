@@ -24,7 +24,7 @@ def collect_comments(model: syside.Model) -> list[dict]:
                 "comments": [],
             }
 
-            for comment in element.comments:
+            for comment in element.comments.collect():
                 if type(comment) is syside.Comment:
                     element_info["comments"].append({
                         "name": comment.name,
@@ -66,11 +66,8 @@ def print_to_csv(collected_docs: list[dict], output_file: pathlib.Path) -> None:
 
 
 def main() -> None:
-    # Load SysML model and get diagnostics (errors/warnings)
-    (model, diagnostics) = syside.load_model([MODEL_FILE_PATH])
-
-    # Make sure the model contains no errors before proceeding
-    assert not diagnostics.contains_errors(warnings_as_errors=True)
+    # Load the SysML model; raises syside.ModelError on any error or warning
+    model = syside.load_model([MODEL_FILE_PATH], warnings_as_errors=True)
 
     docs = collect_comments(model)
     print_to_csv(docs, CSV_FILE_PATH)

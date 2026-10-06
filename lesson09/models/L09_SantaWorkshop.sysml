@@ -24,36 +24,36 @@ package L09_SantaWorkshop {
                 part headElf : Elf;
 
                 part albert : Elf {
-                        attribute redefines skillType := SkillType::assembly;
-                        attribute redefines skillLevel := 50.0;
+                        attribute :>> skillType := SkillType::assembly;
+                        attribute :>> skillLevel := 50.0;
                 }
                 part betty : Elf {
-                        attribute redefines skillType := SkillType::assembly;
-                        attribute redefines skillLevel := 100.0;
+                        attribute :>> skillType := SkillType::assembly;
+                        attribute :>> skillLevel := 100.0;
                 }
                 part charlie : Elf {
-                        attribute redefines skillType := SkillType::quality;
-                        attribute redefines skillLevel := 100.0;
+                        attribute :>> skillType := SkillType::quality;
+                        attribute :>> skillLevel := 100.0;
                 }
                 part diana : Elf {
-                        attribute redefines skillType := SkillType::quality;
-                        attribute redefines skillLevel := 100.0;
+                        attribute :>> skillType := SkillType::quality;
+                        attribute :>> skillLevel := 100.0;
                 }
                 part edward : Elf {
-                        attribute redefines skillType := SkillType::packaging;
-                        attribute redefines skillLevel := 100.0;
+                        attribute :>> skillType := SkillType::packaging;
+                        attribute :>> skillLevel := 100.0;
                 }
                 part fiona : Elf {
-                        attribute redefines skillType := SkillType::packaging;
-                        attribute redefines skillLevel := 100.0;
+                        attribute :>> skillType := SkillType::packaging;
+                        attribute :>> skillLevel := 100.0;
                 }
                 part george : Elf {
-                        attribute redefines skillType := SkillType::assembly;
-                        attribute redefines skillLevel := 150.0;
+                        attribute :>> skillType := SkillType::assembly;
+                        attribute :>> skillLevel := 150.0;
                 }
                 part helen : Elf {
-                        attribute redefines skillType := SkillType::quality;
-                        attribute redefines skillLevel := 150.0;
+                        attribute :>> skillType := SkillType::quality;
+                        attribute :>> skillLevel := 150.0;
                 }
         }
 

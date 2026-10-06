@@ -4,7 +4,7 @@ import syside
 # Path to our SysML model file
 LESSON_DIR = pathlib.Path(__file__).parent.parent
 MODEL_FILE_PATH = LESSON_DIR / "models" / "L15_BasicFeatureEvaluation.sysml"
-STANDARD_LIBRARY = syside.Environment.get_default().lib
+CONTEXT = syside.vm.Context(syside.Environment.get_default().lib)
 
 
 def find_element_by_name(model: syside.Model, name: str) -> syside.Element | None:
@@ -20,7 +20,7 @@ def evaluate_expression(expression: syside.Expression) -> syside.Value | None:
     compiler = syside.Compiler()
     value, compilation_report = compiler.evaluate(
         expr=expression,
-        stdlib=STANDARD_LIBRARY,
+        context=CONTEXT,
         experimental_quantities=True,
     )
     if compilation_report.fatal:
@@ -37,7 +37,7 @@ def evaluate_attribute_values(element: syside.Element) -> list[dict]:
 
     results = dict()
 
-    for attribute in element.owned_elements:
+    for attribute in element.owned_elements.collect():
         if isinstance(attribute, syside.Feature):
             results[attribute.name] = evaluate_expression(
                 attribute.feature_value_expression
@@ -47,11 +47,8 @@ def evaluate_attribute_values(element: syside.Element) -> list[dict]:
 
 
 def main() -> None:
-    # Load SysML model and get diagnostics (errors/warnings)
-    (model, diagnostics) = syside.load_model([MODEL_FILE_PATH])
-
-    # Make sure the model contains no errors before proceeding
-    assert not diagnostics.contains_errors(warnings_as_errors=True)
+    # Load the SysML model; raises syside.ModelError on any error or warning
+    model = syside.load_model([MODEL_FILE_PATH], warnings_as_errors=True)
 
     # Find the Rudolph element in the model
     rudolph_element = find_element_by_name(model, "Rudolph")

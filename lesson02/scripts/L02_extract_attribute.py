@@ -26,11 +26,8 @@ def show_part_attributes(part: syside.Element, part_level: int = 0) -> None:
 
 
 def main() -> None:
-    # Load SysML model and get diagnostics (errors/warnings)
-    (model, diagnostics) = syside.load_model([MODEL_FILE_PATH])
-
-    # Make sure the model contains no errors before proceeding
-    assert not diagnostics.contains_errors(warnings_as_errors=True)
+    # Load the SysML model; raises syside.ModelError on any error or warning
+    model = syside.load_model([MODEL_FILE_PATH], warnings_as_errors=True)
 
     root_element = find_element_by_name(model, "SantaSleigh")
 

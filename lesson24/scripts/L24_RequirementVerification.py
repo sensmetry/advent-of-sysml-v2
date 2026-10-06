@@ -6,7 +6,7 @@ import syside
 ## ============================================================================
 LESSON_DIR = pathlib.Path(__file__).parent.parent
 MODEL_FILE_PATH = LESSON_DIR / "models" / "L24_RequirementSatisfaction.sysml" 
-STANDARD_LIBRARY = syside.Environment.get_default().lib
+CONTEXT = syside.vm.Context(syside.Environment.get_default().lib)
 
 ## ============================================================================
 ## SYSML MODEL PARSING
@@ -31,7 +31,7 @@ class ModelParsing:
     ) -> list[syside.Element]:
         """Search the model for a specific elements by type."""
         result = []
-        for element in parent.owned_elements:
+        for element in parent.owned_elements.collect():
             if type(element) is searchType:
                 result.append(element)
         return result
@@ -44,7 +44,7 @@ class ModelParsing:
     ) -> list[syside.Feature]:
         """Search for inherited features by type."""
         result = []
-        for feature in parent.inherited_features:
+        for feature in parent.inherited_features.collect():
             if type(feature) is searchType:
                 result.append(feature)
 
@@ -61,7 +61,7 @@ class ModelParsing:
     ) -> syside.Element | None:
         """Search for a specific owned element by name."""
 
-        for element in parent.owned_elements:
+        for element in parent.owned_elements.collect():
             if element.name == name:
                 return element
         return None
@@ -76,7 +76,7 @@ class ModelParsing:
         value, compilation_report = compiler.evaluate_feature(
             feature=feature,
             scope=scope,
-            stdlib=STANDARD_LIBRARY,
+            context=CONTEXT,
             experimental_quantities=True,
         )
         if compilation_report.fatal:
@@ -105,7 +105,7 @@ class ModelParsing:
 
         return [
             x.body.replace("\n", "")
-            for x in element.members
+            for x in element.members.collect()
             if type(x) is syside.Documentation and x.is_library_element is False
         ]
 
@@ -149,9 +149,9 @@ class Verification:
         print("   " * level, f"└ REQ [{name}]: {docs[0] if len(docs) > 0 else None}")
 
         # Get subject from requirement and evaluate its value within context
-        subjects = [x for x in requirement.memberships if type(x) is syside.SubjectMembership]
+        subjects = [x for x in requirement.memberships.collect() if type(x) is syside.SubjectMembership]
         assert len(subjects) == 1
-        subject_value = ModelParsing.evaluate_feature(subjects[0].targets[0], scope)
+        subject_value = ModelParsing.evaluate_feature(subjects[0].targets.at(0), scope)
 
         # Get assume and require constraints by looking at owningMembership (parent) kind
         # This is better illustrated by CST structure of `<kind> constraint`:
@@ -199,11 +199,8 @@ class Verification:
 
 
 def main() -> None:
-    # Load SysML model and get diagnostics (errors/warnings)
-    (model, diagnostics) = syside.load_model([MODEL_FILE_PATH])
-
-    # Make sure the model contains no errors before proceeding
-    assert not diagnostics.contains_errors(warnings_as_errors=True)
+    # Load the SysML model; raises syside.ModelError on any error or warning
+    model = syside.load_model([MODEL_FILE_PATH], warnings_as_errors=True)
 
     # Find elements and evaluate their requirements
     ordinary_cargo_bay = ModelParsing.find_element_by_name(model, "OrdinaryCargoBay")

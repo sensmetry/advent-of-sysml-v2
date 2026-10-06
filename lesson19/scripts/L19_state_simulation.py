@@ -14,7 +14,7 @@ import matplotlib.image as mpimg
 ## ============================================================================
 LESSON_DIR = pathlib.Path(__file__).parent.parent
 MODEL_FILE_PATH = LESSON_DIR / "models" / "L19_State_Simulation.sysml"
-STANDARD_LIBRARY = syside.Environment.get_default().lib
+CONTEXT = syside.vm.Context(syside.Environment.get_default().lib)
 
 SIM_SCENARIO_FILE_PATH = LESSON_DIR / "scripts" / "sim_scenario_nominal.csv" # Set to None for interactive mode
 SIM_STEP_DELAY = 0.1 # Delay between scenario steps in seconds
@@ -26,13 +26,11 @@ class ModelExtraction:
     @staticmethod
     def load_model_from_file(path: pathlib.Path) -> syside.Model | None:
         """Load SysML model from configured path"""
-        (model, diagnostics) = syside.load_model([path])
-
-        if diagnostics.contains_errors():
-            print(diagnostics)
+        try:
+            return syside.load_model([path])
+        except syside.ModelError as error:
+            print(error.diagnostics)
             return None
-
-        return model
 
     @staticmethod
     def find_element_by_name(model: syside.Model, name: str) -> syside.Element | None:
@@ -46,7 +44,7 @@ class ModelExtraction:
     def find_owned_elements_by_type(parent: syside.Element, searchType: syside.Type) -> list[syside.Element]:
         """Search the model for a specific elements by type."""
         result = []
-        for element in parent.owned_elements:
+        for element in parent.owned_elements.collect():
             if type(element) is searchType:
                 result.append(element)
         return result
@@ -58,7 +56,7 @@ class ModelExtraction:
         value, compilation_report = compiler.evaluate_feature(
             feature=feature,
             scope=scope,
-            stdlib=STANDARD_LIBRARY,
+            context=CONTEXT,
             experimental_quantities=True,
         )
         if compilation_report.fatal:
@@ -69,13 +67,13 @@ class ModelExtraction:
     @staticmethod
     def build_state_object(state: syside.StateUsage) -> dict:
         """Build a dictionary representation of a state including substates."""
-        substates = [x for x in state.owned_elements if type(x) is syside.StateUsage]
+        substates = [x for x in state.owned_elements.collect() if type(x) is syside.StateUsage]
 
         initial_substate = None
         if substates:
             successions = ModelExtraction.find_owned_elements_by_type(state, syside.SuccessionAsUsage)
             if successions:
-                initial_substate = successions[0].targets[0].name
+                initial_substate = successions[0].targets.at(0).name
 
         return {
             "name": state.name,
@@ -133,7 +131,7 @@ class ModelExtraction:
             state_machine_element, syside.SuccessionAsUsage
         )
         assert len(successions) == 1
-        initial_state = successions[0].targets[0]
+        initial_state = successions[0].targets.at(0)
 
         # Extract simulation parameters
         attributes = ModelExtraction.find_owned_elements_by_type(

@@ -4,7 +4,7 @@ import syside
 # Path to our SysML model file
 LESSON_DIR = pathlib.Path(__file__).parent.parent
 MODEL_FILE_PATH = LESSON_DIR / "models" / "L15_BasicFeatureEvaluation.sysml"
-STANDARD_LIBRARY = syside.Environment.get_default().lib
+CONTEXT = syside.vm.Context(syside.Environment.get_default().lib)
 
 
 def find_element_by_name(model: syside.Model, name: str) -> syside.Element | None:
@@ -23,7 +23,7 @@ def evaluate_feature(
     value, compilation_report = compiler.evaluate_feature(
         feature=feature,
         scope=scope,
-        stdlib=STANDARD_LIBRARY,
+        context=CONTEXT,
         experimental_quantities=True,
     )
     if compilation_report.fatal:
@@ -33,11 +33,8 @@ def evaluate_feature(
 
 
 def main() -> None:
-    # Load SysML model and get diagnostics (errors/warnings)
-    (model, diagnostics) = syside.load_model([MODEL_FILE_PATH])
-
-    # Make sure the model contains no errors before proceeding
-    assert not diagnostics.contains_errors(warnings_as_errors=True)
+    # Load the SysML model; raises syside.ModelError on any error or warning
+    model = syside.load_model([MODEL_FILE_PATH], warnings_as_errors=True)
 
     # Find the SantaSleigh element in the model
     reindeer = find_element_by_name(model, "Reindeer")

@@ -1,0 +1,337 @@
+#:schema https://docs.sensmetry.com/schemas/latest/syside.schema.json
+[format]
+line-width = 100
+tab-width = 4
+tabs = false
+
+[format.keywords.defined-by]
+fallback = "token"
+preserve = false
+
+[format.keywords.redefines]
+fallback = "token"
+preserve = false
+
+[format.keywords.specializes]
+fallback = "keyword"
+preserve = false
+
+[format.keywords.subsets]
+fallback = "keyword"
+preserve = false
+
+[format.keywords.references]
+fallback = "keyword"
+preserve = false
+
+[format.keywords.crosses]
+fallback = "keyword"
+preserve = false
+
+[format.synth]
+literal-real = "prec"
+
+[lsp.inlay-hints.implicit-specializations]
+standard-library = true
+
+[lsp.hover]
+force-root-to-workspace = false
+path-resolution = "relative"
+
+# [lint.global-namespace-distinguishability]
+# type = "information"
+
+# Viz settings
+
+[viz.layout.render_style]
+general          = "nested"
+interconnection  = "nested"
+action_flow      = "nested"
+state_transition = "nested"
+sequence         = "nested"
+
+[viz.expose]
+# subtree | promoted | flat
+mode = "subtree"
+
+[viz.compartments]
+# max_entries              = 1    # -1 unlimited, 0 hides feature compartments, N shows the first N entries; doc and metadata are never capped
+show_inherited_rows      = true  # false hides inherited (^) compartment rows
+show_annotation_rows     = true  # false hides doc and metadata compartment rows
+
+[viz.labels]
+show_fork_join_labels    = false
+show_decide_merge_labels = false
+
+[viz.filters.general]
+show_node_heritage_edges = true
+show_port_heritage_edges = false
+show_inherited_nodes     = true
+show_attributes_as     = "compartments"  # "nodes" | "compartments" | "hidden" (unset: compartments in nested, nodes in tree)
+
+[viz.filters.interconnection]
+show_node_heritage_edges = true
+show_port_heritage_edges = false
+show_inherited_nodes     = true
+# show_attributes_as     = "nodes" | "compartments" | "hidden" (unset: compartments in nested, nodes in tree)
+
+[viz.filters.action_flow]
+show_node_heritage_edges = true
+show_port_heritage_edges = false
+show_inherited_nodes     = true
+# show_attributes_as     = "nodes" | "compartments" | "hidden" (unset: compartments in nested, nodes in tree)
+
+[viz.filters.state_transition]
+show_node_heritage_edges = true
+show_port_heritage_edges = false
+show_inherited_nodes     = true
+# show_attributes_as     = "nodes" | "compartments" | "hidden" (unset: compartments in nested, nodes in tree)
+
+[viz.filters.sequence]
+show_node_heritage_edges = true
+show_port_heritage_edges = false
+show_inherited_nodes     = true
+# show_attributes_as     = "nodes" | "compartments" | "hidden" (unset: compartments in nested, nodes in tree)
+
+[viz.render]
+# zoom_level = 3.0
+
+[viz.style]
+# light | dark | light_mono | dark_mono
+theme = "light"
+
+[viz.style.group.uniform]
+members          = [
+  "PartUsage", "PartDefinition",
+  "ActionUsage", "ActionDefinition",
+  "ItemUsage", "ItemDefinition",
+  "PortUsage", "PortDefinition",
+  "RequirementUsage", "RequirementDefinition",
+  "AttributeUsage", "AttributeDefinition",
+  "StateUsage", "StateDefinition",
+  "ConstraintUsage", "ConstraintDefinition",
+  "UseCaseUsage", "UseCaseDefinition",
+  "InterfaceUsage", "InterfaceDefinition",
+  "EnumerationUsage", "EnumerationDefinition",
+  "ReferenceUsage",
+]
+stroke           = "#2c2c2eff"
+
+# [viz.style.group.plain_usages]
+# members          = ["Usage"]
+# fill_header      = "#FD7D5D"
+# fill_body        = "#FFEEEE"
+# text_keyword     = "#5C2E22"
+
+[viz.style.group.part_usage]
+members          = ["PartUsage"]
+fill_header      = "#88b7e3ff"
+fill_body        = "#f7f9ffff"
+text_keyword     = "#1f4373ff"
+
+[viz.style.group.part_definition]
+members          = ["PartDefinition"]
+fill_header      = "#5d9ddbff"
+fill_body        = "#f7f9ffff"
+text_keyword     = "#163366ff"
+
+[viz.style.group.action_usage]
+members          = ["ActionUsage"]
+fill_header      = "#80d6a7ff"
+fill_body        = "#f6fcf8ff"
+text_keyword     = "#1d5e3aff"
+
+[viz.style.group.action_definition]
+members          = ["ActionDefinition"]
+fill_header      = "#43c479ff"
+fill_body        = "#f6fcf8ff"
+text_keyword     = "#0f4527ff"
+
+[viz.style.group.item_usage]
+members          = ["ItemUsage"]
+fill_header      = "#f3cc7aff"
+fill_body        = "#fdfaeeff"
+text_keyword     = "#6e4f0dff"
+
+[viz.style.group.item_definition]
+members          = ["ItemDefinition"]
+fill_header      = "#f0aa30ff"
+fill_body        = "#fdfaeeff"
+text_keyword     = "#503b08ff"
+
+[viz.style.group.port_usage]
+members          = ["PortUsage"]
+fill_header      = "#c0adeaff"
+fill_body        = "#fbf7ffff"
+text_keyword     = "#492480ff"
+
+[viz.style.group.port_definition]
+members          = ["PortDefinition", "ConjugatedPortDefinition"]
+fill_header      = "#a386dbff"
+fill_body        = "#fbf7ffff"
+text_keyword     = "#2f1565ff"
+
+[viz.style.group.requirement_usage]
+members          = ["RequirementUsage"]
+fill_header      = "#f4969dff"
+fill_body        = "#fff7f9ff"
+text_keyword     = "#7a1c2aff"
+
+[viz.style.group.requirement_definition]
+members          = ["RequirementDefinition"]
+fill_header      = "#ec5f6bff"
+fill_body        = "#fff7f9ff"
+text_keyword     = "#5e1220ff"
+
+[viz.style.group.attribute_usage]
+members          = ["AttributeUsage"]
+fill_header      = "#b1bcd0ff"
+fill_body        = "#f7f8fbff"
+text_keyword     = "#363f55ff"
+
+[viz.style.group.attribute_definition]
+members          = ["AttributeDefinition"]
+fill_header      = "#8295beff"
+fill_body        = "#f7f8fbff"
+text_keyword     = "#1f2839ff"
+
+[viz.style.group.state_usage]
+members          = ["StateUsage"]
+fill_header      = "#80d6d6ff"
+fill_body        = "#f4fcfcff"
+text_keyword     = "#1d5e5eff"
+
+[viz.style.group.state_definition]
+members          = ["StateDefinition"]
+fill_header      = "#38c4c4ff"
+fill_body        = "#f4fcfcff"
+text_keyword     = "#0f4545ff"
+
+[viz.style.group.constraint_usage]
+members          = ["ConstraintUsage"]
+fill_header      = "#f5b272ff"
+fill_body        = "#fff5ebff"
+text_keyword     = "#704211ff"
+
+[viz.style.group.constraint_definition]
+members          = ["ConstraintDefinition"]
+fill_header      = "#f0852fff"
+fill_body        = "#fff5ebff"
+text_keyword     = "#583108ff"
+
+[viz.style.group.usecase_usage]
+members          = ["UseCaseUsage"]
+fill_header      = "#ccd966ff"
+fill_body        = "#fbfdf0ff"
+text_keyword     = "#54600fff"
+
+[viz.style.group.usecase_definition]
+members          = ["UseCaseDefinition"]
+fill_header      = "#b8c426ff"
+fill_body        = "#fbfdf0ff"
+text_keyword     = "#3b3f08ff"
+
+[viz.style.group.interface_usage]
+members          = ["InterfaceUsage"]
+fill_header      = "#b3b3ebff"
+fill_body        = "#f5f5ffff"
+text_keyword     = "#2c3573ff"
+
+[viz.style.group.interface_definition]
+members          = ["InterfaceDefinition"]
+fill_header      = "#8a8ad9ff"
+fill_body        = "#f5f5ffff"
+text_keyword     = "#222266ff"
+
+[viz.style.group.enumeration_usage]
+members          = ["EnumerationUsage"]
+fill_header      = "#ffe066ff"
+fill_body        = "#fffdf0ff"
+text_keyword     = "#6b5800ff"
+
+[viz.style.group.enumeration_definition]
+members          = ["EnumerationDefinition"]
+fill_header      = "#f5c518ff"
+fill_body        = "#fffdf0ff"
+text_keyword     = "#4a3d00ff"
+
+[viz.style.group.reference_usage]
+members          = ["ReferenceUsage"]
+fill_header      = "#e3e3e3ff"
+fill_body        = "#f7f9ffff"
+text_keyword     = "#737373ff"
+
+[viz.style.group.connections]
+members          = ["ConnectionUsage", "ConnectionDefinition"]
+fill_header      = "#FFFACDFF"
+fill_body        = "#FFFFE0FF"
+text_keyword     = "#737373ff"
+
+
+# EDGES
+
+# [viz.style.group.specialization_edges]
+# members          = ["Specialization"]
+# stroke_edge      = "#4d4d51ff"
+# text_edge        = "#4d4d51ff"
+#
+# [viz.style.group.dependency_edges]
+# members          = ["Dependency"]
+# stroke_edge      = "#636367ff"
+# text_edge        = "#636367ff"
+
+[viz.style.group.annotation_edges]
+members          = ["Annotation"]
+stroke_edge      = "#96670eff"
+text_edge        = "#96670eff"
+
+[viz.style.group.binding_edges]
+members          = ["BindingConnectorAsUsage"]
+stroke_edge      = "#7a2470ff"
+text_edge        = "#7a2470ff"
+
+[viz.style.group.connection_edges]
+members          = ["ConnectionUsage"]
+stroke_edge      = "#224e82ff"
+text_edge        = "#224e82ff"
+
+[viz.style.group.interface_edges]
+members          = ["InterfaceUsage"]
+stroke_edge      = "#35359bff"
+text_edge        = "#35359bff"
+
+
+[viz.style.group.allocation_edges]
+members          = ["AllocationUsage"]
+stroke_edge      = "#5a4c73ff"
+text_edge        = "#5a4c73ff"
+
+[viz.style.group.flow_edges]
+members          = ["FlowUsage"]
+stroke_edge      = "#8d5b0cff"
+text_edge        = "#8d5b0cff"
+
+[viz.style.group.succession_edges]
+members          = ["SuccessionAsUsage"]
+stroke_edge      = "#217244ff"
+text_edge        = "#217244ff"
+
+[viz.style.group.transition_edges]
+members          = ["TransitionUsage", "ExhibitStateUsage"]
+stroke_edge      = "#166f6fff"
+text_edge        = "#166f6fff"
+
+[viz.style.group.requirement_edges]
+members          = ["SatisfyRequirementUsage", "RequirementConstraintMembership"]
+stroke_edge      = "#942b35ff"
+text_edge        = "#942b35ff"
+
+[viz.style.group.constraint_edges]
+members          = ["AssertConstraintUsage"]
+stroke_edge      = "#9f551cff"
+text_edge        = "#9f551cff"
+
+[viz.style.group.usecase_edges]
+members          = ["IncludeUseCaseUsage"]
+stroke_edge      = "#636f14ff"
+text_edge        = "#636f14ff"
