@@ -1,4 +1,4 @@
-syside
+syside>=1.0.0b1
 sismic
 matplotlib
 graphviz
